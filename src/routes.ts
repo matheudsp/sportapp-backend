@@ -14,11 +14,16 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 //company 
 import { CreateCompanyController } from './controllers/company/CreateCompanyController';
 import { DetailCompanyController } from './controllers/company/DetailCompanyController';
+import { ListCompanyController } from './controllers/company/ListCompanyController';
 
 //court
 import { CreateCourtController } from './controllers/court/CreateCourtController';
 import { DetailCourtController } from './controllers/court/DetailCourtController';
 import { ListCourtController } from './controllers/court/ListCourtController';
+
+//booking
+import { CreateBookingController } from './controllers/booking/CreateBookingController';
+
 
 const router = Router();
 
@@ -37,7 +42,9 @@ router.post('/createcompany', isAuthenticated, new CreateCompanyController().han
 
 router.post('/company', isAuthenticated,  new DetailCompanyController().handle )
 
-router.get('/companies', isAuthenticated,  new DetailCompanyController().handle )
+router.get('/companies', isAuthenticated,  new ListCompanyController().handle )
+
+//put route
 
 //-- COURT ROUTES --
 router.post('/createcourt', isAuthenticated, new CreateCourtController().handle)
@@ -46,8 +53,10 @@ router.post('/court', isAuthenticated, new DetailCourtController().handle)
 
 router.post('/courts', isAuthenticated, new ListCourtController().handle)
 
-//-- BOOKING ROUTES --
+//put route
 
+//-- BOOKING ROUTES --
+router.post('/schedule', isAuthenticated, new CreateBookingController().handle)
 
 
 export { router }; 

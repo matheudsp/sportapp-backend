@@ -1,13 +1,18 @@
 import prismaClient from "../../prisma";
 interface PostRequest {
-  company_id: number
+  companyId: number
 }
 class DetailCompanyService{
-  async execute({company_id}: PostRequest){
+  async execute({companyId}: PostRequest){
 
-    const findById = await prismaClient.company.findMany({
+    
+    if(!companyId){
+      throw new Error("Company invalid")
+    }
+
+    const findById = await prismaClient.company.findFirst({
       where:{
-        id: company_id
+        id: companyId
       },
       select:{
         id:true,

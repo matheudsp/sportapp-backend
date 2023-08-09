@@ -4,11 +4,11 @@ import { DetailCompanyService } from '../../services/company/DetailCompanyServic
 class DetailCompanyController{
   async handle(req: Request, res: Response){
 
-    const company_id = req.body;
+    const companyId = req.body;
 
     const detailCompanyService = new DetailCompanyService();
 
-    const company = await detailCompanyService.execute(company_id);
+    const company = await detailCompanyService.execute(companyId);
 
     return res.json(company);
 

@@ -1,18 +1,17 @@
 import prismaClient from "../../prisma";
 
 
-class ListCompanyService{
-    async execute(){
+class ListCompanyService {
+    async execute() {
 
         const findAll = await prismaClient.company.findMany({
-            
-            select:{
-                id:true,
+
+            select: {
+                id: true,
                 name: true,
-                type: true,
-                price_per_hour:true,
-                available:true,
-                companyId: true
+                email: true,
+                address: true,
+                phone: true,
             }
 
         })
@@ -21,4 +20,4 @@ class ListCompanyService{
     }
 }
 
-export { ListCompanyService}
+export { ListCompanyService }
